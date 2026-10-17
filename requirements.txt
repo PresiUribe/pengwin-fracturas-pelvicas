@@ -1,0 +1,17 @@
+# Entorno probado en Google Colab (Python 3.11+, GPU T4). Versiones exactas del run: outputs/informe/requirements-lock.txt
+torch>=2.3
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-image>=0.22
+scikit-learn>=1.4
+SimpleITK>=2.3
+plotly>=5.20
+matplotlib>=3.8
+seaborn>=0.13
+tqdm>=4.66
+Pillow>=10.1
+gradio>=4.44
+qrcode>=7.4
+tabulate>=0.9
+segment-anything>=1.0      # solo para el baseline SAM (no forma parte del pipeline)
