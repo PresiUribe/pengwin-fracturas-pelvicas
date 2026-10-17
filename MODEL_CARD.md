@@ -38,6 +38,7 @@ Red multitarea 2.5D para CT pélvico: un backbone compartido y tres cabezas.
 - **Post-proceso calibrado en validación:** volumen mínimo 1.568 mm³ (percentil 5 de los conminutos de train), τ_principal 0.60, τ_frontera 0.50.
 - **Distancia de separación:** se mide en el 38.5 % de los conminutos de test. Error medio 0.05 mm en los que están en contacto y 1.72 mm en los separados (n = 4).
 - **SAM ViT-B zero-shot** con la misma caja como prompt: Dice 0.857 vs 0.940 del modelo propio. SAM tarda 495 ms por corte frente a 10 ms del modelo propio.
+- **HD95 / ASSD por fragmento** (extensión opcional del §5; medianas en mm, fragmentos emparejados, resolución de trabajo): principal 3.61 / 0.52; conminutos 33.74 / 4.91 (21 de 39 emparejados); todos 11.70 / 1.42. Detalle en `results/hd95_assd.csv`, generado con `scripts/hd95_assd.py`.
 
 ### Ablación (validación; reducida: 4 épocas sobre 24 casos de train, misma semilla y λ)
 | Configuración | F1 | AUC | IoU | mAP@0.5 | mAP@[0.5:0.95] | Dice semántico |
@@ -49,7 +50,17 @@ Red multitarea 2.5D para CT pélvico: un backbone compartido y tres cabezas.
 | Dispositivo | Por corte (3 cabezas + NMS) | Volumen de 401 cortes (red + instancias 3D) |
 |---|---|---|
 | GPU NVIDIA T4 | 10.2 ms | 9.6 s (8.3 + 1.3) |
-| CPU (Colab, entorno sin GPU) | 341 ms | 160.7 s (151.6 + 4.3) |
+| CPU (Colab, entorno sin GPU) | 175.7 ms | 160.7 s (151.6 + 4.3) |
+
+
+## Otros checkpoints del repositorio
+Los tres usan el mismo backbone (FundidoraPC + CBAM), splits por paciente, la semilla 42 y precisión mixta. Su alcance, sus limitaciones y la advertencia de uso no clínico son los mismos de este card.
+
+| Checkpoint | Qué es | Entrenamiento | Métricas (validación) | Uso |
+|---|---|---|---|---|
+| `s9_det_best.pth` | Detector de la semana 9: entrada 2D de 1 corte, FundidoraPC + CBAM, grilla 9×9×8 sin anchors, NMS propio y cabeza de presencia por región. Sin cabeza de segmentación. | 15 épocas, AdamW + cosine. Se guarda la mejor época por IoU (9). Antes pasó la prueba de overfit sobre un batch de 16 cortes (IoU 0.93, mAP@0.50 1.0). | IoU 0.742 · mAP@0.50 0.827 · mAP@[0.50:0.95] 0.466 | Avance S9. Base de diseño de la cabeza de detección de PengwinNet10; no se usa en el dashboard. |
+| `abl_*.pth` (completo) | PengwinNet10 con CBAM y entrada 2.5D N = 5. | Ablación reducida: 4 épocas sobre 24 casos de train, mismos λ. | Tabla de ablación: F1 0.954 · IoU 0.692 · mAP@0.50 0.766 · Dice semántico 0.921 | Solo para la ablación. |
+| `abl_*.pth` (sin CBAM) | Igual al anterior, pero sin el bloque CBAM. | Igual al anterior. | F1 0.947 · IoU 0.677 · mAP@0.50 0.732 · Dice semántico 0.911 | Solo para la ablación. |
 
 ## Alcance
 Demostrar, con fines académicos, un pipeline propio sobre CT pélvico del dataset PENGWIN: detección → NMS → segmentación de instancia → clasificación por pertenencia → medición en mm.

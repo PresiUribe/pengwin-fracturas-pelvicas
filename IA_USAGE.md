@@ -3,7 +3,7 @@
 Consigna §7: modelo de IA usado, prompt exacto, parte del código o decisión que salió de la IA, modificaciones hechas por el equipo y análisis crítico (aciertos, errores y limitaciones).
 
 - **Modelo:** Claude (Anthropic), en la app de Claude. Sesión 1 en un chat normal; sesión 2 en una sesión de trabajo con archivos y terminal, identificador `claude-opus-5-5`.
-- **Integrantes:** Samuel Uribe, Emilio Marquez, Juan Pablo Lopez.
+- **Integrantes:** Samuel Uribe, Emilio Marquez y Juan Pablo Lopez trabajaron con la misma cuenta de Claude y en las mismas sesiones. Por eso hay un solo registro, que recoge los prompts del equipo.
 - **Prompts:** se copian tal como se escribieron, con sus errores de tipeo. Cuando el mensaje fue solo una salida de terminal, una captura o un archivo, se indica entre corchetes.
 - **Semana 8 (EDA y Visualizador 1):** no quedó registro de un chat con IA en el historial; si algún integrante la usó, agrega aquí su sesión con el mismo formato.
 
