@@ -1,0 +1,9 @@
+# Dependencias del dashboard (PyTorch se instala aparte en el Dockerfile, en su variante CPU o GPU)
+numpy>=1.26,<2.3
+pandas>=2.1,<3
+scipy>=1.11
+scikit-image>=0.22
+SimpleITK>=2.3
+plotly>=5.20,<6
+Pillow>=10.1
+gradio>=4.44,<6

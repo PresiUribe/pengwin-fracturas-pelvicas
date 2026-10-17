@@ -1,0 +1,11 @@
+data/
+weights/
+notebooks/
+results/
+tests/
+.git/
+.github/
+**/__pycache__/
+*.ipynb
+*.zip
+*.md
