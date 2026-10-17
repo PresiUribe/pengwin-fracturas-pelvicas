@@ -1,0 +1,5 @@
+*.pth binary
+*.png binary
+*.ipynb linguist-language=Jupyter\ Notebook
+*.sh text eol=lf
+*.ps1 text eol=crlf

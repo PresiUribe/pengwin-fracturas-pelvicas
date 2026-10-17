@@ -1,0 +1,22 @@
+# datos derivados del dataset (se publican como asset de un Release, no en git)
+data/*
+!data/README.md
+!data/dashboard/.gitkeep
+!data/images/.gitkeep
+*.mha
+*.nii
+*.nii.gz
+*.npz
+*.zip
+
+# entorno
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+.env
+.DS_Store
+Thumbs.db
+cloudflared*
