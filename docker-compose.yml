@@ -1,0 +1,27 @@
+# Dashboard PENGWIN + túnel de Cloudflare (Quick Tunnel, sin cuenta)
+#   docker compose up -d --build      → levanta todo
+#   scripts/url_tunel.(sh|ps1)        → imprime la URL pública https://….trycloudflare.com
+#   docker compose down               → apaga todo
+services:
+  app:
+    build: .
+    image: pengwin-dashboard:1.0
+    container_name: pengwin-app
+    ports:
+      - "7860:7860"                    # local: http://localhost:7860
+    volumes:
+      - ./weights:/data/weights:ro     # s10_best.pth (versionado en el repo)
+      - ./data/dashboard:/data/dashboard:ro   # predicciones de test exportadas por el notebook S10 (desde Drive)
+      - ./data/images:/data/images:ro  # CT crudos de test (opcional: Visualizador 1 e inferencia en vivo)
+    environment:
+      - PENGWIN_DEVICE=cpu
+    restart: unless-stopped
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: pengwin-tunnel
+    command: tunnel --no-autoupdate --url http://app:7860
+    depends_on:
+      app:
+        condition: service_healthy     # el túnel abre cuando la app ya responde
+    restart: unless-stopped
