@@ -31,7 +31,7 @@ Modelo propio vs SAM ViT-B zero-shot con la misma caja como prompt: Dice 0.940 v
 │   └── ejecutados/                    # copia del notebook S11 con sus salidas
 ├── pengwin_core.py                    # arquitectura, NMS, post-proceso, distancias y visualizadores
 ├── app.py                             # dashboard Gradio
-├── Dockerfile · docker-compose.yml · docker-compose.gpu.yml
+├── Dockerfile · docker-compose.yml
 ├── scripts/                           # preparar_datos.py · url_tunel.sh · url_tunel.ps1
 ├── tests/                             # pruebas de humo (corren en CI en cada PR)
 ├── weights/                           # s10_best.pth, s9_det_best.pth, abl_*.pth
@@ -61,7 +61,6 @@ docker compose down
 
 - Local: http://localhost:7860 · Público: `https://….trycloudflare.com`. La URL cambia en cada arranque del túnel.
 - **CPU por defecto.** Los casos precalculados cargan al instante; la inferencia en vivo de un volumen tarda ~2–3 min en CPU.
-- **GPU NVIDIA** (con NVIDIA Container Toolkit): `docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build`.
 - La primera construcción descarga ~1.5 GB (PyTorch CPU + dependencias). Las siguientes usan la caché.
 
 ## Reproducir el entrenamiento (Colab)
