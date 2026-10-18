@@ -3,6 +3,8 @@
 Proyecto Integrador Corte 2 · Universidad Autónoma de Occidente · 2026-2
 Samuel Uribe · Emilio Marquez · Juan Pablo Lopez
 
+> 🎥 **Video de respaldo de la demo** (dashboard en Docker + túnel de Cloudflare): https://www.youtube.com/watch?v=2TRgPktQ-YU
+
 > ⚠ **Uso exclusivamente académico.** No es un dispositivo médico, no ha sido validado clínicamente y no debe usarse para apoyar decisiones quirúrgicas reales.
 
 Sistema propio (sin YOLO, Detectron2 ni Mask R-CNN preentrenado) que, a partir de una CT pélvica del dataset [PENGWIN](https://pengwin.grand-challenge.org):
