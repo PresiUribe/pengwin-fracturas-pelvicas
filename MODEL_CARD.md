@@ -37,7 +37,7 @@ Red multitarea 2.5D para CT pélvico: un backbone compartido y tres cabezas.
 - **Por fragmento:** principal Dice 0.921 · conminutos Dice 0.288 (39 conminutos GT) · 23 falsos positivos.
 - **Post-proceso calibrado en validación:** volumen mínimo 1.568 mm³ (percentil 5 de los conminutos de train), τ_principal 0.60, τ_frontera 0.50.
 - **Distancia de separación:** se mide en el 38.5 % de los conminutos de test. Error medio 0.05 mm en los que están en contacto y 1.72 mm en los separados (n = 4).
-- **SAM ViT-B zero-shot** con la misma caja como prompt: Dice 0.857 vs 0.940 del modelo propio. SAM tarda 495 ms por corte frente a 10 ms del modelo propio.
+- **SAM ViT-B zero-shot** con la misma caja como prompt: Dice 0.857 e IoU 0.781, frente a Dice 0.940 e IoU 0.906 del modelo propio. SAM tarda 495 ms por corte frente a 10 ms del modelo propio.
 - **HD95 / ASSD por fragmento** (extensión opcional del §5; medianas en mm, fragmentos emparejados, resolución de trabajo): principal 3.61 / 0.52; conminutos 33.74 / 4.91 (21 de 39 emparejados); todos 11.70 / 1.42. Detalle en `results/hd95_assd.csv`, generado con `scripts/hd95_assd.py`.
 
 ### Ablación (validación; reducida: 4 épocas sobre 24 casos de train, misma semilla y λ)
