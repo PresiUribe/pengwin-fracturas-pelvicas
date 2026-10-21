@@ -61,3 +61,4 @@ Vale la pena hacer más de un commit por PR, uno por cambio lógico. Así el his
 - [ ] `MODEL_CARD.md` con fusión de fragmentos en contacto y advertencia de uso no clínico
 - [ ] `IA_USAGE.md` completo, con los prompts de **cada** integrante
 - [ ] Informe mini-paper y pitch con video de respaldo
+Nota: los commits del PR #4 (dashboard, Docker, scripts, CI y notebook S11) son de Juan Pablo Lopez (JPL06); se hicieron con un correo mal escrito y por eso GitHub no los asocia a su cuenta.
